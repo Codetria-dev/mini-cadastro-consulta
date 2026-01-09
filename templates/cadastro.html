@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Registro - Cadastro e Consulta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cadastro e Consulta</h1>
+            <p class="subtitle-header">Cadastro de clientes </p>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn-nav">Início</a>
+                <a href="{{ url_for('cadastro') }}" class="btn-nav active">Cadastrar</a>
+                <a href="{{ url_for('busca') }}" class="btn-nav">Buscar</a>
+            </nav>
+        </header>
+
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <section class="form-section">
+                <h2>Cadastrar Novo Registro</h2>
+                <p class="subtitle">Preencha os dados abaixo para cadastrar um novo cliente</p>
+                
+                <form method="POST" class="form-cadastro">
+                    <div class="form-group">
+                        <label for="nome">Nome <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="nome" 
+                            name="nome" 
+                            required 
+                            placeholder="Ex: João Silva"
+                            value="{{ nome if nome else '' }}"
+                            autofocus
+                        >
+                        <small>Nome completo </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            placeholder="Ex: joao@empresa.com.br"
+                            value="{{ email if email else '' }}"
+                        >
+                        <small>Email para contato</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="telefone" 
+                            name="telefone" 
+                            required
+                            placeholder="Ex: (11) 99999-9999"
+                            value="{{ telefone if telefone else '' }}"
+                        >
+                        <small>Telefone para contato</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input 
+                            type="text" 
+                            id="empresa" 
+                            name="empresa" 
+                            placeholder="Ex: Empresa XYZ Ltda"
+                            value="{{ empresa if empresa else '' }}"
+                        >
+                        <small>Nome da empresa ou categoria </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações</label>
+                        <textarea 
+                            id="observacoes" 
+                            name="observacoes" 
+                            rows="4"
+                            placeholder="Informações adicionais sobre o registro..."
+                        >{{ observacoes if observacoes else '' }}</textarea>
+                        <small>Notas ou informações adicionais (opcional)</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Cadastrar Registro</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>Cadastro e consulta de dados</p>
+        </footer>
+    </div>
+</body>
+</html>

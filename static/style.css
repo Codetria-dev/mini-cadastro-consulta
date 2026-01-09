@@ -1,0 +1,283 @@
+/* ===============================
+   RESET + BASE
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2933;
+    line-height: 1.5;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+/* ===============================
+   HEADER
+================================ */
+header {
+    padding: 24px 32px;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.subtitle-header {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* ===============================
+   NAV
+================================ */
+nav {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.btn-nav {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #334155;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-nav.active {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border-color: #1e3a8a;
+}
+
+/* ===============================
+   MAIN
+================================ */
+main {
+    padding: 32px;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+.section-header h2,
+.form-section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* ===============================
+   FORM
+================================ */
+.form-section {
+    max-width: 520px;
+}
+
+.form-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #dc2626;
+}
+
+input,
+textarea {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+small {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.form-actions {
+    margin-top: 28px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #1e3a8a;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+/* ===============================
+   TABLE
+================================ */
+.excel-sheet {
+    overflow-x: auto;
+}
+
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.8rem;
+}
+
+.excel-table th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.excel-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.id-cell {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.nome-cell {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.date-cell {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* ===============================
+   OBSERVAÇÕES
+================================ */
+.observacoes-row td {
+    background-color: #f8fafc;
+    font-size: 0.75rem;
+    color: #475569;
+}
+
+/* ===============================
+   ALERTS
+================================ */
+.alert {
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+}
+
+.alert-success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #7f1d1d;
+    border: 1px solid #fecaca;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.empty-state {
+    margin-top: 32px;
+    text-align: center;
+    color: #64748b;
+}
+
+.empty-state p {
+    margin-bottom: 16px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+    padding: 16px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    border-top: 1px solid #e5e7eb;
+}

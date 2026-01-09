@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Registros - Cadastro e Consulta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cadastro e Consulta</h1>
+            <p class="subtitle-header">Cadastro de clientes </p>
+            <nav>
+                <a href="{{ url_for('index') }}" class="btn-nav">Início</a>
+                <a href="{{ url_for('cadastro') }}" class="btn-nav">Cadastrar</a>
+                <a href="{{ url_for('busca') }}" class="btn-nav active">Buscar</a>
+            </nav>
+        </header>
+
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <section class="form-section">
+                <h2>Buscar Registros</h2>
+                <p class="subtitle">Busque por nome, email ou empresa</p>
+                
+                <form method="POST" class="form-busca">
+                    <div class="form-group">
+                        <label for="termo">Termo de Busca</label>
+                        <input 
+                            type="text" 
+                            id="termo" 
+                            name="termo" 
+                            placeholder="Digite o nome, email ou empresa"
+                            value="{{ termo_busca }}"
+                            autofocus
+                            aria-label="Campo de busca"
+                        >
+                        <small>Busca em todos os campos principais</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+                    </div>
+                </form>
+            </section>
+
+            {% if registros %}
+                <section class="section-header">
+                    <h3>Resultados da Busca ({{ registros|length }} encontrado(s))</h3>
+                </section>
+
+                <div class="registros-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Empresa</th>
+                                <th>Data Cadastro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for registro in registros %}
+                                <tr>
+                                    <td class="id-cell">#{{ registro.id }}</td>
+                                    <td class="nome-cell"><strong>{{ registro.nome }}</strong></td>
+                                    <td>{{ registro.email or '-' }}</td>
+                                    <td>{{ registro.telefone or '-' }}</td>
+                                    <td>{{ registro.empresa or '-' }}</td>
+                                    <td class="date-cell">{{ registro.data_cadastro[:10] }}</td>
+                                </tr>
+                                {% if registro.observacoes %}
+                                <tr class="observacoes-row">
+                                    <td colspan="6" class="observacoes-cell">
+                                        <small>{{ registro.observacoes }}</small>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% elif termo_busca %}
+                <div class="empty-state">
+                    <p>Nenhum registro encontrado com o termo "{{ termo_busca }}"</p>
+                    <a href="{{ url_for('cadastro') }}" class="btn btn-primary">Cadastrar Novo Registro</a>
+                </div>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>Cadastro e consulta de dados</p>
+        </footer>
+    </div>
+</body>
+</html>
