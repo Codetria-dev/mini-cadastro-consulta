@@ -1,3 +1,4 @@
+
 """
 Sistema simples de cadastro e consulta de dados
 Pensado para cadastro de leads/clientes/produtos
